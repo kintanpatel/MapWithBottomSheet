@@ -98,25 +98,25 @@ struct ContentView: View {
                     
                     // 📌 Title + Desc
                     VStack(alignment: .leading, spacing: 6) {
-                        Text("Hi i am Sheet")
-                            .font(.largeTitle.bold())
-                        Text("Start Now and learn more about local whether intensity and how it affects your daily routine and outdoor plans.")
+                        Text("Discover Places")
+                            .font(.title.bold())
+                        Text("Browse locations, view them on the map, and follow the route connecting all selected points.")
                             .font(.callout)
                             .foregroundStyle(.gray)
-                            .fixedSize(horizontal: false, vertical: true) // ✅ Force full multiline layout
+                            .fixedSize(horizontal: false, vertical: true) //  Force full multiline layout
                     }
                     .padding(.horizontal, 15)
                     .padding(.top, 15)
                     .background(GeometryReader { proxy in
                         Color.clear
                             .onAppear {
-                                // ✅ Wait for layout to fully settle with multiline text
+                                //  Wait for layout to fully settle with multiline text
                                 DispatchQueue.main.async {
                                     titleHeight = proxy.size.height
                                 }
                             }
                             .onChange(of: proxy.size.height) { _, newHeight in
-                                // ✅ Re-capture if height changes after reflow
+                                //  Re-capture if height changes after reflow
                                 titleHeight = newHeight
                             }
                     })
@@ -130,7 +130,7 @@ struct ContentView: View {
                             ForEach(items) { place in
                                 HStack(spacing: 14) {
                                     
-                                    // 📍 Icon (Pin style instead of weather icon)
+                                    //  Icon (Pin style instead of weather icon)
                                     ZStack {
                                         RoundedRectangle(cornerRadius: 10)
                                             .fill(place.color.opacity(0.15))
@@ -141,7 +141,7 @@ struct ContentView: View {
                                             .foregroundStyle(place.color)
                                     }
                                     
-                                    // 📄 Info
+                                    //  Info
                                     VStack(alignment: .leading, spacing: 3) {
                                         Text(place.name)
                                             .font(.subheadline)
